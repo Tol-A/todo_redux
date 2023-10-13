@@ -2,25 +2,25 @@ import { createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import axios from 'axios'
 
 export const fetchTasks = createAsyncThunk('todos/fetchTasks', async () => {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+  const response = await axios.get('http://localhost:8880/todos?_limit=10')
   return response.data
 })
 
 export const deleteTodo = createAsyncThunk('todos/deleteTodo', async (todoId) => {
-    await axios.delete(`https://jsonplaceholder.typicode.com/todos/${todoId}`);
+    await axios.delete(`http://localhost:8880/todos/${todoId}`);
     console.log(`удалился id ${todoId}`)
     return todoId
   }
 )
 
 export const createTodo = createAsyncThunk('todos/createTodo', async (todoData) => {
-    const response = await axios.post('https://jsonplaceholder.typicode.com/todos', todoData);
+    const response = await axios.post('http://localhost:8880/todos', todoData);
     return response.data
   }
 )
 
 export const updateTodo = createAsyncThunk('todos/updateTodo', async (todoData) => {
-  const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${todoData.id}`, todoData)
+  const response = await axios.put(`http://localhost:8880/todos/${todoData.id}`, todoData)
   return response.data
 })
 
