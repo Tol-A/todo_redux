@@ -4,6 +4,7 @@ import { createTodo, updateTodo } from './todoSlice'
 import { nanoid } from 'nanoid'
 
 function TodoForm({ todo = null, closeEditable = null  }) {
+    
     const [title, setTitle] = useState(todo ? todo.title : '')
     const dispatch = useDispatch()
 
