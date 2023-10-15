@@ -8,12 +8,12 @@
     {
       "id": "xRye4vvEA3YHBdKDXZwuc",
       "title": "купить чай",
-      "completed": true
+      "completed": false
     },
     {
       "id": "yliC2QRJZ4XUTxff2xskw",
       "title": "купить кофе",
-      "completed": false
+      "completed": true
     }
   ]
 }
