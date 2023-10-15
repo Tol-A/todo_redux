@@ -3,12 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchTasks, setFilter } from './todoSlice';
 import Todo from './Todo';
 
+
 function TodoList() {
-  // const todos = useSelector(state => state.todos.todos)
   const dispatch = useDispatch();
-
- 
-
   const todos = useSelector(state => {
     const filter = state.todos.filter;
     const todos = state.todos.todos;
@@ -21,31 +18,29 @@ function TodoList() {
         return todos
       }
   })
-
+   
+    const todosLengtch = todos.length;
     const handleFilter = (filter) => {
-        dispatch(setFilter(filter))
+      dispatch(setFilter(filter))
     }
 
     useEffect(() => {
       dispatch(fetchTasks())
     }, [])
 
-    const todosLengtch = todos.length;
 
   return (
-   <>
-    <h1>Todo: {todosLengtch} </h1>
+   <div>
+    <h1>Количество дел: {todosLengtch} </h1>
     <div>
-      <button onClick={() => handleFilter('all')}>все задачи</button>
-      <button onClick={() => handleFilter('completed')}>выполненые задачи</button>
-      <button onClick={() => handleFilter('uncompleted')}>невыполненые задачи</button>
+      <button className='todo-button' onClick={() => handleFilter('all')}>все задачи</button>
+      <button className='todo-button' onClick={() => handleFilter('completed')}>выполненые задачи</button>
+      <button className='todo-button' onClick={() => handleFilter('uncompleted')}>невыполненые задачи</button>
     </div>
-     <div>
       {todos.map(todo => 
-        <Todo key = {todo.id} todo = {todo}/>
+        <Todo key = {todo.id} todo = {todo}  />
       )}
-    </div>
-   </>
+   </div>
   )
 }
 
